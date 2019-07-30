@@ -1,7 +1,9 @@
 package com.codeclan.homework.foldersservice;
 
+import com.codeclan.homework.foldersservice.models.File;
 import com.codeclan.homework.foldersservice.models.Folder;
 import com.codeclan.homework.foldersservice.models.User;
+import com.codeclan.homework.foldersservice.repositories.FileRepository;
 import com.codeclan.homework.foldersservice.repositories.FolderRepository;
 import com.codeclan.homework.foldersservice.repositories.UserRepository;
 import org.junit.Test;
@@ -20,6 +22,9 @@ public class FoldersserviceApplicationTests {
 	@Autowired
 	FolderRepository folderRepository;
 
+	@Autowired
+	FileRepository fileRepository;
+
 	@Test
 	public void contextLoads() {
 	}
@@ -31,6 +36,9 @@ public class FoldersserviceApplicationTests {
 
 		Folder folder = new Folder("Photos", user);
 		folderRepository.save(folder);
+
+		File file = new File("Sunrise", "png", 900, folder);
+		fileRepository.save(file);
 	}
 
 }
